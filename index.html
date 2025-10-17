@@ -2,13 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ericvanlare-dot-com</title>
     <script>
       const theme = localStorage.getItem('theme');
-      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = theme === 'dark' || (!theme && prefersDark);
+      
+      if (isDark) {
         document.documentElement.classList.add('dark');
+        const favicon = document.querySelector('link[rel="icon"]');
+        if (favicon) favicon.href = '/favicon-dark.svg';
       }
     </script>
   </head>
