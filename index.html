@@ -2,16 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/ericvanlare-dot-com/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/ericvanlare-dot-com/favicon-light.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ericvanlare-dot-com</title>
     <script>
       const theme = localStorage.getItem('theme');
-      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = theme === 'dark' || (!theme && prefersDark);
+      
+      if (isDark) {
         document.documentElement.classList.add('dark');
+        const favicon = document.querySelector('link[rel="icon"]');
+        if (favicon) favicon.href = '/favicon-dark.svg';
       }
     </script>
-    <script type="module" crossorigin src="/ericvanlare-dot-com/assets/index-BHFKLx2R.js"></script>
+    <script type="module" crossorigin src="/ericvanlare-dot-com/assets/index-s_M1mRWj.js"></script>
     <link rel="stylesheet" crossorigin href="/ericvanlare-dot-com/assets/index-1OQA29Jm.css">
   </head>
   <body>
