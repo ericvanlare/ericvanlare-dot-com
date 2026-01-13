@@ -11,21 +11,23 @@ function Posts() {
         Posts
       </h1>
 
-      <div className="space-y-10">
+      <div className="space-y-4">
         {posts.map((post) => (
-          <article key={post.slug}>
-            <Link to={`/posts/${post.slug}`} className="group block">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors mb-1">
-                {post.title}
-              </h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                {post.date}
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                {post.description}
-              </p>
-            </Link>
-          </article>
+          <Link
+            key={post.slug}
+            to={`/posts/${post.slug}`}
+            className="group block rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 px-5 py-4 hover:border-accent-500/50 hover:shadow-sm transition-all"
+          >
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+              {post.title}
+            </h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              {post.date}
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
+              {post.description}
+            </p>
+          </Link>
         ))}
       </div>
     </main>
