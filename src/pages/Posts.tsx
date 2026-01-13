@@ -4,7 +4,7 @@ import { posts } from '../data/posts';
 
 function Posts() {
   return (
-    <main className="min-h-screen px-6 sm:px-12 max-w-3xl mx-auto py-12">
+    <main className="min-h-screen px-6 sm:px-12 max-w-3xl mx-auto py-10 sm:py-12">
       <Header />
 
       <h1 className="text-2xl sm:text-3xl font-bold mb-12 text-gray-900 dark:text-gray-100">

@@ -3,7 +3,7 @@ import { ProjectCard } from '../components/ProjectCard';
 
 function About() {
   return (
-    <main className="min-h-screen px-6 sm:px-12 max-w-3xl mx-auto py-12">
+    <main className="min-h-screen px-6 sm:px-12 max-w-3xl mx-auto py-10 sm:py-12">
       <Header />
 
       <section className="mb-16">
