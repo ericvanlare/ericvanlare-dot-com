@@ -13,9 +13,9 @@ export interface Post {
 export const posts: Post[] = [
   {
     slug: 'designing-a-diagramming-agent',
-    title: 'Designing a Diagramming Agent for Codebases',
+    title: 'A Prompt for Grounded Codebase Diagrams',
     date: 'January 2026',
-    description: 'How I built an AI agent that generates interactive diagrams to help developers understand complex codebases.',
+    description: 'AI diagrams are useless if you can\'t click them. Here\'s a prompt that generates diagrams where every node links to real code.',
     featured: true,
     content: DiagrammingAgentPost,
   },
