@@ -16,7 +16,7 @@ Personal site redesigned from resume-style to blog-first. Built with React 19, R
 - Content as React components in `src/content/posts/`
 - One post in progress: "Designing a Diagramming Agent for Codebases"
 
-## What We Did This Session
+## What We Did Last Session
 
 1. Removed thumbnails from ProjectCard, made entire cards clickable
 2. Updated Posts page to use card styling consistent with Home/About
@@ -24,22 +24,32 @@ Personal site redesigned from resume-style to blog-first. Built with React 19, R
 4. Drafted skeleton for first post about grounded codebase diagrams
 5. Committed and pushed to main
 
-## First Post Status
+## What We Did This Session
 
-The post at `src/content/posts/designing-a-diagramming-agent.tsx` has structure but needs:
-- The actual prompt for generating Naiad format diagrams
-- Link to the Naiad diagram viewer (to be built)
+1. Deployed site to Cloudflare Pages (Git-connected, auto-deploys on push)
+2. Fixed `base` path issue — was hardcoded for GitHub Pages, now conditional via `GITHUB_PAGES` env var
+3. Fixed `BrowserRouter basename` — now uses `import.meta.env.BASE_URL`
+4. Rewrote first blog post "A Prompt for Grounded Codebase Diagrams" with actual prompt and usage examples
+5. Transferred DNS management to Cloudflare (nameservers changed from Namecheap)
+6. Added custom domain `ericvanlare.com` — SSL active
 
-Post outline:
-1. The problem - AI diagrams look nice but nothing is clickable
-2. The fix - Ground every node to file:line
-3. The format - Naiad: Mermaid + grounding metadata
-4. The prompt - [TODO]
-5. The viewer - [TODO]
+**Live URLs:**
+- Production: https://ericvanlare.com
+- Pages: https://ericvanlare-dot-com.pages.dev
+- GitHub Pages (backup): https://ericvanlare.github.io/ericvanlare-dot-com/
+
+## First Post Status ✅ COMPLETE
+
+Post published at `/posts/designing-a-diagramming-agent` with:
+- The prompt for generating grounded diagrams
+- Three usage methods (paste, shell alias, skill file)
+- Example output (.mmd and .naiad files)
+
+Future enhancement: add interactive Naiad viewer
 
 ## Cloudflare Migration Plan
 
-### Phase 1: Deploy to Cloudflare Pages ✅ READY
+### Phase 1: Deploy to Cloudflare Pages ✅ COMPLETE
 
 1. **Create project:** Cloudflare Dashboard → Pages → Create project → Connect to Git → Select `ericvanlare/ericvanlare-dot-com`
 
