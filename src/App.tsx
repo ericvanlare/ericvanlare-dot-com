@@ -4,6 +4,7 @@ import About from './pages/About';
 import Posts from './pages/Posts';
 import Post from './pages/Post';
 import PaintMyCity from './pages/PaintMyCity';
+import Admin from './pages/Admin';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/posts" element={<Posts />} />
         <Route path="/posts/:slug" element={<Post />} />
         <Route path="/projects/paintmycity" element={<PaintMyCity />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
   );
 }

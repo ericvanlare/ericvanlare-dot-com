@@ -120,10 +120,85 @@ ericvanlare-api.workers.dev (Cloudflare Worker)
 ## Commands
 
 ```bash
-pnpm dev      # Local dev server
-pnpm build    # Build for production (runs tsc then vite build)
-pnpm preview  # Preview production build
-pnpm lint     # ESLint
+npm run dev      # Local dev server (site)
+npm run build    # Build for production (runs tsc then vite build)
+npm run preview  # Preview production build
+npm run lint     # ESLint
+
+# Worker commands (from /worker directory)
+cd worker
+npm run dev      # Local worker dev server on :8787
+npm run deploy   # Deploy to Cloudflare Workers
+```
+
+## Admin Panel ✅ BUILT
+
+Added `/admin` route with:
+- **Modify Site with AI** - Creates GitHub issues, assigns Copilot, polls for PRs/previews, approve/reject/revise
+- **View Analytics** - Links to Cloudflare Web Analytics dashboard
+
+### Worker
+
+Deployed to: `https://ericvanlare-api.mywebcomic.workers.dev`
+
+Endpoints:
+- `POST /api/ai-mod/request` - Create issue assigned to Copilot
+- `GET /api/ai-mod/list` - List all AI modification requests
+- `GET /api/ai-mod/status?issue=N` - Get status of specific request
+- `POST /api/ai-mod/approve` - Merge PR
+- `POST /api/ai-mod/reject` - Close PR
+- `POST /api/ai-mod/revise` - Request changes (creates new issue)
+- `POST /api/ai-mod/revert` - Undo merged changes
+
+### Setup Steps Remaining
+
+1. **Create GitHub PAT** (Fine-grained token):
+   - Go to: https://github.com/settings/tokens?type=beta
+   - Token name: `ericvanlare-api`
+   - Repository access: Only select `ericvanlare/ericvanlare-dot-com`
+   - Permissions:
+     - Issues: Read and write
+     - Pull requests: Read and write
+     - Contents: Read (for branch info)
+   - Copy the token
+
+2. **Set GITHUB_TOKEN secret**:
+   ```bash
+   cd worker
+   echo "ghp_YOUR_TOKEN" | npx wrangler secret put GITHUB_TOKEN
+   ```
+
+3. **Set Pages environment variable**:
+   - Go to: Cloudflare Dashboard → Pages → ericvanlare-dot-com → Settings → Environment variables
+   - Add: `VITE_PUBLIC_WORKER_URL` = `https://ericvanlare-api.mywebcomic.workers.dev`
+   - Set for Production (and Preview if you want)
+   - Redeploy to pick up the change
+
+4. **Enable Cloudflare Web Analytics**:
+   - Go to: Cloudflare Dashboard → Web Analytics → Add a site
+   - Add `ericvanlare.com`
+   - Copy the token (looks like a UUID)
+   - Replace `PLACEHOLDER_ANALYTICS_TOKEN` in `index.html` with the real token
+
+5. **(Optional) Protect /admin with Cloudflare Access**:
+   - Zero Trust → Access → Applications → Add self-hosted app
+   - Domain: `ericvanlare.com/admin*`
+   - Policy: Allow emails matching yours
+
+### Architecture
+
+```
+ericvanlare.com (Cloudflare Pages)
+├── / (public)
+├── /posts/* (public)
+├── /about (public)
+├── /admin (calls Worker API)
+│
+ericvanlare-api.mywebcomic.workers.dev
+├── POST /api/ai-mod/request
+├── GET /api/ai-mod/list
+├── POST /api/ai-mod/approve
+└── CORS: only allows ericvanlare.com
 ```
 
 ## Notes
@@ -132,3 +207,4 @@ pnpm lint     # ESLint
 - Dark mode via `useDarkMode` hook, persists to localStorage, swaps favicon
 - Mobile nav uses sm breakpoint (640px) not md
 - PaintMyCity uses TensorFlow.js for neural style transfer (large bundle ~1.2MB)
+- Worker uses npm (not pnpm) since it's a separate package
