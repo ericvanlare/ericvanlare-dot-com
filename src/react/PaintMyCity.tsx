@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { fetchCityPOIs, searchImages } from '../utils/wikipedia';
 import type { ImageResult } from '../utils/wikipedia';
 import { compositeBubbles } from '../utils/painter';
@@ -238,9 +237,9 @@ function PaintMyCity() {
   return (
     <main className="min-h-screen flex flex-col px-6 md:px-12 lg:px-24 max-w-6xl mx-auto py-12">
       <section className="mb-8">
-        <Link to="/" className="inline-block mb-6 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
+        <a href="/" className="inline-block mb-6 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
           ← Back to Home
-        </Link>
+        </a>
         <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900 dark:text-gray-100">
           Paint My City
         </h1>

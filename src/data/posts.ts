@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import DiagrammingAgentPost from '../content/posts/designing-a-diagramming-agent';
+import DiagrammingAgentPost from '../blog-content/posts/designing-a-diagramming-agent';
 
 export interface Post {
   slug: string;

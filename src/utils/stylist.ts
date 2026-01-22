@@ -1,4 +1,4 @@
-import { ArbitraryStyleTransferNetwork } from '@magenta/image';
+import type { ArbitraryStyleTransferNetwork } from '@magenta/image';
 
 let cachedModel: ArbitraryStyleTransferNetwork | null = null;
 let modelLoading: Promise<ArbitraryStyleTransferNetwork> | null = null;
@@ -23,6 +23,7 @@ export async function initializeModel(): Promise<ArbitraryStyleTransferNetwork> 
 
   modelLoading = (async () => {
     try {
+      const { ArbitraryStyleTransferNetwork } = await import('@magenta/image');
       const model = new ArbitraryStyleTransferNetwork();
       await model.initialize();
       cachedModel = model;

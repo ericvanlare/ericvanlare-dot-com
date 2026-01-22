@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PaintMyCity from '../../react/PaintMyCity';
+---
+
+<BaseLayout title="PaintMyCity | Eric Van Lare">
+  <div id="paintmycity-container">
+    <PaintMyCity client:only="react" />
+  </div>
+  <noscript>
+    <p class="p-8 text-center text-gray-600">JavaScript is required to use PaintMyCity.</p>
+  </noscript>
+</BaseLayout>

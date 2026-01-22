@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { useDarkMode } from '../hooks/useDarkMode';
 
 export function Header() {
@@ -23,21 +22,21 @@ export function Header() {
 
   return (
     <header className="flex items-center justify-between pb-6 mb-10 sm:mb-12 border-b border-gray-200 dark:border-gray-800">
-      <Link
-        to="/"
+      <a
+        href="/"
         className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100"
       >
         Eric Van Lare
-      </Link>
+      </a>
 
       {/* Desktop nav */}
       <nav className="hidden sm:flex items-center gap-8 text-base text-gray-600 dark:text-gray-400">
-        <Link to="/posts" className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
+        <a href="/posts" className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
           Posts
-        </Link>
-        <Link to="/about" className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
+        </a>
+        <a href="/about" className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
           About
-        </Link>
+        </a>
         <a
           href="https://github.com/ericvanlare"
           target="_blank"
@@ -85,20 +84,20 @@ export function Header() {
         {/* Dropdown menu - anchored to button */}
         {menuOpen && (
           <nav className="absolute right-0 top-full mt-2 w-44 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg shadow-lg py-2 z-50">
-            <Link
-              to="/posts"
+            <a
+              href="/posts"
               onClick={closeMenu}
               className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >
               Posts
-            </Link>
-            <Link
-              to="/about"
+            </a>
+            <a
+              href="/about"
               onClick={closeMenu}
               className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >
               About
-            </Link>
+            </a>
             <a
               href="https://github.com/ericvanlare"
               target="_blank"

@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Header } from '../components/Header';
+import { featuredPosts } from '../data/posts';
+
+const primaryPost = featuredPosts[0];
+---
+
+<BaseLayout title="Eric Van Lare">
+  <main class="min-h-screen px-6 sm:px-12 max-w-3xl mx-auto py-10 sm:py-12">
+    <Header client:load />
+
+    <section class="mb-12">
+      <h1 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100">
+        Field notes from building AI tools
+      </h1>
+    </section>
+
+    <section>
+      <h2 class="text-xs font-medium uppercase tracking-wide text-gray-400 dark:text-gray-500 mb-4">
+        Writing
+      </h2>
+      {primaryPost && (
+        <a
+          href={`/posts/${primaryPost.slug}`}
+          class="group block rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 px-5 py-4 hover:border-accent-500/50 hover:shadow-sm transition-all"
+        >
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+            {primaryPost.title}
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            {primaryPost.description}
+          </p>
+        </a>
+      )}
+      <a
+        href="/posts"
+        class="inline-block mt-6 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+      >
+        All posts →
+      </a>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  linkUrl: string;
+  isExternal?: boolean;
+}
+const { title, subtitle, description, linkUrl, isExternal = false } = Astro.props;
+const cardClassName = "group block rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 px-5 py-4 hover:border-accent-500/50 hover:shadow-sm transition-all";
+---
+
+{isExternal ? (
+  <a href={linkUrl} target="_blank" rel="noopener noreferrer" class={cardClassName}>
+    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+      {title}
+    </h3>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{subtitle}</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">{description}</p>
+  </a>
+) : (
+  <a href={linkUrl} class={cardClassName}>
+    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+      {title}
+    </h3>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{subtitle}</p>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">{description}</p>
+  </a>
+)}

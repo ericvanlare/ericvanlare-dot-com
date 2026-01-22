@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Header } from '../components/Header';
 
-const WORKER_URL = import.meta.env.VITE_PUBLIC_WORKER_URL || 'http://localhost:8787';
+const WORKER_URL = import.meta.env.PUBLIC_WORKER_URL || 'http://localhost:8787';
 const ANALYTICS_URL = 'https://dash.cloudflare.com/?to=/:account/web-analytics';
 
 interface AiRequest {
