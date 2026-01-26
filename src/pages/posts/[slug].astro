@@ -1,38 +1,36 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Header } from '../../components/Header';
-import { posts } from '../../data/posts';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
+  const posts = await getCollection('blog');
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
 }
 
-interface Props {
-  post: typeof posts[number];
-}
 const { post } = Astro.props;
-const PostContent = post.content;
+const { Content } = await post.render();
 ---
 
-<BaseLayout title={`${post.title} | Eric Van Lare`}>
+<BaseLayout title={`${post.data.title} | Eric Van Lare`}>
   <main class="min-h-screen px-6 sm:px-12 max-w-3xl mx-auto py-12">
     <Header client:load />
 
     <article>
       <header class="mb-12">
         <h1 class="text-2xl md:text-3xl font-bold mb-3 text-gray-900 dark:text-gray-100">
-          {post.title}
+          {post.data.title}
         </h1>
         <p class="text-sm text-gray-500 dark:text-gray-400">
-          {post.date}
+          {post.data.date}
         </p>
       </header>
 
       <div class="prose prose-lg dark:prose-invert max-w-none">
-        <PostContent />
+        <Content />
       </div>
     </article>
   </main>

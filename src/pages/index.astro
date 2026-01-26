@@ -1,7 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Header } from '../components/Header';
-import { pinnedPost, latestPost } from '../data/posts';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const pinnedPost = posts.find((post) => post.data.pinned);
+const latestPost = posts.find((post) => !post.data.pinned);
 ---
 
 <BaseLayout title="Eric Van Lare">
@@ -25,10 +29,10 @@ import { pinnedPost, latestPost } from '../data/posts';
             class="group block rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 px-5 py-4 hover:border-accent-500/50 hover:shadow-sm transition-all"
           >
             <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
-              {pinnedPost.title}
+              {pinnedPost.data.title}
             </h3>
             <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-              {pinnedPost.description}
+              {pinnedPost.data.description}
             </p>
           </a>
         </div>
@@ -44,10 +48,10 @@ import { pinnedPost, latestPost } from '../data/posts';
             class="group block rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 px-5 py-4 hover:border-accent-500/50 hover:shadow-sm transition-all"
           >
             <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
-              {latestPost.title}
+              {latestPost.data.title}
             </h3>
             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-              {latestPost.description}
+              {latestPost.data.description}
             </p>
           </a>
         </div>
