@@ -234,6 +234,35 @@ function Admin() {
         </a>
       </div>
 
+      <div className="mt-8">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          ✏️ Editor Prototypes
+        </h2>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+          Test different markdown editors to find the best fit.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <a
+            href="/admin/editor/vditor"
+            className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors"
+          >
+            Vditor (IR)
+          </a>
+          <a
+            href="/admin/editor/hypermd"
+            className="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white text-sm font-medium transition-colors"
+          >
+            HyperMD
+          </a>
+          <a
+            href="/admin/editor/codemirror6"
+            className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium transition-colors"
+          >
+            CodeMirror 6
+          </a>
+        </div>
+      </div>
+
       {activePanel === 'ai' && (
         <div className="mt-8 p-6 bg-purple-50 dark:bg-purple-950/30 rounded-lg max-w-2xl">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">

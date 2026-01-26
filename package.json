@@ -12,11 +12,22 @@
   "dependencies": {
     "@astrojs/check": "^0.9.6",
     "@astrojs/react": "^4.4.2",
+    "@codemirror/commands": "^6.10.1",
+    "@codemirror/lang-markdown": "^6.5.0",
+    "@codemirror/language-data": "^6.5.2",
+    "@codemirror/state": "^6.5.4",
+    "@codemirror/view": "^6.39.11",
+    "@lezer/highlight": "^1.2.3",
     "@magenta/image": "^0.2.1",
     "@tensorflow/tfjs": "^4.22.0",
+    "@types/codemirror": "^5.60.17",
     "astro": "^5.16.14",
+    "codemirror": "^5.65.20",
+    "hypermd": "^0.3.11",
+    "marked": "^17.0.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "vditor": "^3.11.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

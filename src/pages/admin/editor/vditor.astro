@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { VditorEditor } from '../../../components/admin/editors/VditorEditor';
+---
+
+<BaseLayout title="Vditor Editor | Admin">
+  <div class="h-[100svh] flex flex-col bg-gray-50 dark:bg-gray-950">
+    <nav class="flex-none px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 flex items-center gap-4">
+      <a
+        href="/admin"
+        class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+      >
+        ← Back to Admin
+      </a>
+      <span class="text-gray-300 dark:text-gray-700">|</span>
+      <a
+        href="/admin/editor/hypermd"
+        class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+      >
+        Try HyperMD →
+      </a>
+    </nav>
+    <div class="flex-1 min-h-0">
+      <VditorEditor client:only="react" />
+    </div>
+  </div>
+</BaseLayout>
